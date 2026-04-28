@@ -1,0 +1,101 @@
+:root {
+    --dark-blue: #0a192f;
+    --digital-blue: #007bff;
+    --electric-orange: #ff8c00;
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --white: #ffffff;
+    --text-muted: #a8b2d1;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background: var(--dark-blue); color: var(--white); overflow-x: hidden; }
+
+.container { width: 90%; max-width: 1200px; margin: auto; }
+.section-padding { padding: 100px 0; }
+span { color: var(--electric-orange); }
+
+/* --- Navbar --- */
+.navbar {
+    position: fixed;
+    top: 0; width: 100%;
+    padding: 20px 0;
+    z-index: 1000;
+    transition: 0.4s;
+}
+.navbar.sticky {
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 12px 0;
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 700; color: var(--white); }
+.nav-links { display: flex; list-style: none; }
+.nav-links li { margin: 0 15px; }
+.nav-links a { text-decoration: none; color: var(--white); font-size: 0.9rem; transition: 0.3s; }
+.nav-links a:hover { color: var(--electric-orange); }
+
+/* --- Hero --- */
+#hero {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80') center/cover;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to right, var(--dark-blue), rgba(10, 25, 47, 0.4));
+}
+.hero-content { position: relative; z-index: 10; max-width: 700px; }
+.hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin: 20px 0; }
+.badge { background: var(--glass); border: 1px solid var(--electric-orange); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; color: var(--electric-orange); }
+
+/* --- Buttons --- */
+.btn { text-decoration: none; padding: 12px 30px; border-radius: 5px; font-weight: 600; transition: 0.3s; display: inline-block; }
+.btn-primary { background: var(--electric-orange); color: white; margin-right: 15px; }
+.btn-outline { border: 1px solid var(--white); color: white; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3); }
+
+/* --- Services (Glassmorphism) --- */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+.service-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.4s;
+    backdrop-filter: blur(5px);
+}
+.service-card:hover { transform: translateY(-10px); border-color: var(--electric-orange); }
+.card-img img { width: 100%; height: 200px; object-fit: cover; opacity: 0.7; }
+.card-body { padding: 30px; position: relative; }
+.icon-float { font-size: 2rem; color: var(--electric-orange); margin-bottom: 15px; display: block; }
+.card-body h3 { margin-bottom: 10px; }
+.card-body p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+.learn-more { color: var(--electric-orange); text-decoration: none; font-size: 0.8rem; font-weight: 600; }
+
+/* --- About & Tech Banner --- */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.about-img img { width: 100%; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+.stats { display: flex; gap: 30px; margin-top: 30px; }
+.stat-item h3 { color: var(--electric-orange); font-size: 2rem; }
+
+.tech-banner { background: linear-gradient(45deg, var(--dark-blue), var(--digital-blue)); padding: 80px 0; text-align: center; }
+
+/* --- Reveal Animation --- */
+.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* --- WhatsApp Float --- */
+.whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; animation: pulse 2s infinite; }
+
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+
+@media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .nav-links { display: none; }
+}
